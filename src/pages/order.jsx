@@ -1,6 +1,10 @@
+import './header.css'
+import './checkout-header.css'
+import './orders.css'
 export function Order (){
 return (
 <>
+    <title>order</title>
    <div className="header">
       <div className="left-section">
         <a href="/" className="header-link">
