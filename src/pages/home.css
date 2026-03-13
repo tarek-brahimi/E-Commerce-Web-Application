@@ -1,157 +1,201 @@
 .home-page {
   margin-top: 60px;
+  background: #f5f0e8;
+  min-height: 100vh;
 }
 
+/* ── Masthead ── */
+.home-page .page-masthead {
+  padding: 36px 28px 24px;
+  border-bottom: 3px solid #0a0a0a;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #f5f0e8;
+}
+.home-page .masthead-title {
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: #0a0a0a;
+}
+.home-page .masthead-title .outline {
+  -webkit-text-stroke: 2.5px #0a0a0a;
+  color: transparent;
+}
+.home-page .masthead-meta {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(10,10,10,0.45);
+  text-align: right;
+  line-height: 1.9;
+}
+
+/* ── Grid — gap between cards ── */
 .home-page .products-grid {
   display: grid;
-
-  /* - In CSS Grid, 1fr means a column will take up the
-       remaining space in the grid.
-     - If we write 1fr 1fr ... 1fr; 8 times, this will
-       divide the grid into 8 columns, each taking up an
-       equal amount of the space.
-     - repeat(8, 1fr); is a shortcut for repeating "1fr"
-       8 times (instead of typing out "1fr" 8 times).
-       repeat(...) is a special property that works with
-       display: grid; */
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 24px;
+  border-top: none;
+  border-left: none;
 }
 
-/* @media is used to create responsive design (making the
-   website look good on any screen size). This @media
-   means when the screen width is 2000px or less, we
-   will divide the grid into 7 columns instead of 8. */
-@media (max-width: 2000px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(7, 1fr);
-  }
-}
+@media (max-width: 1400px) { .home-page .products-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 1000px) { .home-page .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px)  { .home-page .products-grid { grid-template-columns: 1fr; } }
 
-/* This @media means when the screen width is 1600px or
-   less, we will divide the grid into 6 columns. */
-@media (max-width: 1600px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-@media (max-width: 1300px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (max-width: 1000px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 800px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 575px) {
-  .home-page .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 450px) {
-  .home-page .products-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* ── Product card ── */
 .home-page .product-container {
-  padding-top: 40px;
-  padding-bottom: 25px;
-  padding-left: 25px;
-  padding-right: 25px;
-
-  border-right: 1px solid rgb(240, 240, 240);
-  border-bottom: 1px solid rgb(240, 240, 240);
-
+  background: #ffffff;
+  border: 3px solid #0a0a0a;
+  box-shadow: 5px 5px 0 #0a0a0a;
   display: flex;
   flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.home-page .product-container:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 9px 9px 0 #0a0a0a;
+  z-index: 2;
 }
 
+/* Image */
 .home-page .product-image-container {
+  height: 200px;
+  background: #f5f0e8;
+  border-bottom: 3px solid #0a0a0a;
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  height: 180px;
-  margin-bottom: 20px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.home-page .product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.home-page .product-container:hover .product-image {
+  transform: scale(1.06) rotate(-1deg);
 }
 
-.home-page .product-image {
-  /* Images overflow the container by default. To prevent this, set
-     max-width and max-height to 100% to stay inside container. */
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 5px;
+/* Tags */
+.home-page .product-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ffe500;
+  border: 2px solid #0a0a0a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  color: #0a0a0a;
+}
+.home-page .product-tag.hot  { background: #ff3f3f; color: #fff; }
+.home-page .product-tag.sale { background: #0a0a0a; color: #ffe500; }
+
+/* Info */
+.home-page .product-info {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .home-page .product-name {
-  height: 40px;
-  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a0a0a;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  height: 36px;
 }
 
 .home-page .product-rating-container {
   display: flex;
   align-items: center;
+  gap: 6px;
   margin-bottom: 10px;
 }
-
-.home-page .product-rating-stars {
-  width: 100px;
-  margin-right: 6px;
-}
-
+.home-page .product-rating-stars { width: 80px; }
 .home-page .product-rating-count {
-  color: rgb(25, 135, 84);
-  cursor: auto;
-  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(10,10,10,0.4);
+  border-bottom: 1px solid rgba(10,10,10,0.2);
+  cursor: pointer;
 }
+.home-page .product-rating-count:hover { color: #0a0a0a; border-bottom-color: #0a0a0a; }
 
 .home-page .product-price {
+  font-size: 24px;
   font-weight: 700;
-  margin-bottom: 10px;
+  letter-spacing: -0.04em;
+  color: #0a0a0a;
+  margin-bottom: 12px;
+  line-height: 1;
 }
 
-.home-page .product-quantity-container {
-  margin-bottom: 17px;
-}
+.home-page .product-quantity-container { margin-bottom: 12px; }
 
-.home-page .product-spacer {
-  flex: 1;
-}
+.home-page .product-spacer { flex: 1; }
 
 .home-page .added-to-cart {
-  color: rgb(25, 135, 84);
-  font-size: 16px;
-
-  display: flex;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  background: #00c853;
+  border: 2px solid #0a0a0a;
+  display: inline-flex;
   align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
   margin-bottom: 8px;
-
-  /* At first, the "Added to cart" message will
-     be invisible. Use JavaScript to change the
-     opacity and make it visible. */
   opacity: 0;
+  transition: opacity 0.3s;
 }
+.home-page .added-to-cart img { height: 13px; }
 
-.home-page .added-to-cart img {
-  height: 19px;
-  margin-right: 6px;
-}
-
+/* ── Add to cart button — colorful per card ── */
 .home-page .add-to-cart-button {
   width: 100%;
-  padding: 8px;
-  height: 34px;
-  margin-top: 1px;
+  padding: 10px 8px;
+  height: auto;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border: 3px solid #0a0a0a;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 4px 4px 0 #0a0a0a;
+}
+
+.home-page .product-container:nth-child(4n+1) .add-to-cart-button { background: #ffe500; color: #0a0a0a; }
+.home-page .product-container:nth-child(4n+2) .add-to-cart-button { background: #ff3f3f; color: #ffffff; }
+.home-page .product-container:nth-child(4n+3) .add-to-cart-button { background: #4f46e5; color: #ffffff; }
+.home-page .product-container:nth-child(4n+4) .add-to-cart-button { background: #00c853; color: #0a0a0a; }
+
+.home-page .add-to-cart-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #0a0a0a;
+}
+.home-page .add-to-cart-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
 }

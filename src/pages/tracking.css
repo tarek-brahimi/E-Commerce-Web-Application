@@ -1,81 +1,103 @@
 .tracking-page {
-  max-width: 850px;
-  margin-top: 90px;
-  margin-bottom: 100px;
-  padding-left: 30px;
-  padding-right: 30px;
-
-  /* margin-left: auto;
-     margin-right auto;
-     Is a trick for centering an element horizontally
-     without needing a container. */
+  max-width: 860px;
+  margin-top: 96px;
+  margin-bottom: 120px;
+  padding: 0 28px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .tracking-page .back-to-orders-link {
-  display: inline-block;
-  margin-bottom: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  color: #0a0a0a;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 2px solid #0a0a0a;
+  padding: 6px 14px;
+  background: #f5f0e8;
+  box-shadow: 3px 3px 0 #0a0a0a;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.tracking-page .back-to-orders-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #0a0a0a;
+  background: #ffe500;
 }
 
 .tracking-page .delivery-date {
-  font-size: 25px;
+  font-size: clamp(28px, 5vw, 56px);
   font-weight: 700;
-  margin-bottom: 10px;
+  letter-spacing: -0.04em;
+  color: #0a0a0a;
+  line-height: 0.95;
+  margin-bottom: 14px;
 }
-
 .tracking-page .product-info {
-  margin-bottom: 3px;
+  font-size: 13px;
+  color: rgba(10,10,10,0.5);
+  font-weight: 500;
+  margin-bottom: 4px;
 }
 
 .tracking-page .product-image {
-  max-width: 150px;
-  max-height: 150px;
-  margin-top: 25px;
-  margin-bottom: 50px;
+  max-width: 130px;
+  max-height: 130px;
+  object-fit: contain;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  display: block;
+  border: 3px solid #0a0a0a;
+  padding: 10px;
+  background: #f5f0e8;
+  box-shadow: 5px 5px 0 #0a0a0a;
 }
 
+/* Progress */
 .tracking-page .progress-labels-container {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 15px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(10,10,10,0.35);
+  margin-bottom: 12px;
 }
-
 .tracking-page .current-status {
-  color: rgb(25, 135, 84);
+  color: #0a0a0a;
+  background: #ffe500;
+  border: 2px solid #0a0a0a;
+  padding: 2px 8px;
 }
 
-@media (max-width: 575px) {
-  .tracking-page .progress-labels-container {
-    font-size: 16px;
-  }
-}
-
+@media (max-width: 575px) { .tracking-page .progress-labels-container { font-size: 11px; } }
 @media (max-width: 450px) {
-  .tracking-page .progress-labels-container {
-    flex-direction: column;
-    margin-bottom: 5px;
-  }
-
-  .tracking-page .progress-label {
-    margin-bottom: 3px;
-  }
+  .tracking-page .progress-labels-container { flex-direction: column; gap: 5px; margin-bottom: 8px; }
 }
 
 .tracking-page .progress-bar-container {
-  height: 25px;
+  height: 16px;
   width: 100%;
-
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 50px;
+  background: #ffffff;
+  border: 3px solid #0a0a0a;
   overflow: hidden;
+  box-shadow: 4px 4px 0 #0a0a0a;
 }
-
 .tracking-page .progress-bar {
   height: 100%;
-  background-color: rgb(25, 135, 84);
-  border-radius: 50px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #ffe500,
+    #ffe500 8px,
+    #0a0a0a 8px,
+    #0a0a0a 10px
+  );
   width: 50%;
+  transition: width 1s ease;
 }
