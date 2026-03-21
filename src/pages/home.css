@@ -196,6 +196,6 @@
   box-shadow: 2px 2px 0 #0a0a0a;
 }
 .home-page .add-to-cart-button:active {
-  transform: translate(4px, 4px);
+  transform: translate(5px, 4px);
   box-shadow: none;
 }
