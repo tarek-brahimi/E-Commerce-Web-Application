@@ -1,4 +1,4 @@
-import { Header } from './components/header';
+import { Header } from '../components/header';
 import './checkout-header.css'
 import './orders.css'
 export function Order (){
